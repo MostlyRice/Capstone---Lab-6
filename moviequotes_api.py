@@ -1,9 +1,16 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+X_RapidAPI_Key = os.getenv('X-RapidAPI-Key')
+Content_Type = os.getenv('Content-Type')
 
 def get_quote():
     headers = {
-        'X-RapidAPI-Key': '8wNLNQ7mfymshC9zFxUDJKeHvcrEp1X3EAAjsnWkNmEBOzE4uI',
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'X-RapidAPI-Key': X_RapidAPI_Key,
+        'Content-Type': Content_Type
     }
     response = requests.post('https://andruxnet-random-famous-quotes.p.rapidapi.com/?count=1&cat=movies', headers=headers)
     data = response.json()[0]
